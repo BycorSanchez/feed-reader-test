@@ -66,27 +66,16 @@ $(function () {
          * the use of beforeEach and the asynchronous done() function
          */
         beforeEach(function (done) {
-            loadFeed(0, function (done) {
-                done();
-            });
+            loadFeed(0, done);
         });
 
         // Test that loadFeed() loads at least a single .entry element within the .feed container
         it('have at least 1 feed after loadFeed() is called', function (done) {
             const entries = document.querySelector('.feed').getElementsByClassName('.entry');
-            expect(entries.length).greaterThan(0);
+            expect(entries.length).toBeGreaterThan(0);
             done();
-        })
+        });
 
     });
-
-
-
-    /* TODO: Write a new test suite named "New Feed Selection" */
-
-    /* TODO: Write a test that ensures when a new feed is loaded
-     * by the loadFeed function that the content actually changes.
-     * Remember, loadFeed() is asynchronous.
-     */
 
 }());
