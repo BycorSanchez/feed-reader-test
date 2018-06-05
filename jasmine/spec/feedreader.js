@@ -71,7 +71,7 @@ $(function () {
 
         // Test that loadFeed() loads at least a single .entry element within the .feed container
         it('have at least 1 feed after loadFeed() is called', function (done) {
-            const entries = document.querySelector('.feed').getElementsByClassName('.entry');
+            const entries = document.querySelector('.feed').getElementsByClassName('entry');
             expect(entries.length).toBeGreaterThan(0);
             done();
         });
