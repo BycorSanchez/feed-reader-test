@@ -1,16 +1,11 @@
 /* feedreader.js
  *
- * This is the spec file that Jasmine will read and contains
- * all of the tests that will be run against your application.
- */
-
-/* We're placing all of our tests within the $() function,
- * since some of these tests may require DOM elements. We want
- * to ensure they don't run until the DOM is ready.
+ * Spec file that contain all tests that Jasmine will run against our application.
+ * The $() function ensures that tests don't run until the DOM is ready.
  */
 $(function () {
 
-    // RSS feed tests
+    // RSS feed suite
     describe('RSS Feeds', function () {
 
         // Test that allFeeds variable is defined and has at least 1 value
@@ -36,7 +31,7 @@ $(function () {
         });
     });
 
-    // The menu tests
+    // The menu suite
     describe('The menu', function () {
         const body = document.body;
         const menu = document.querySelector(".menu-icon-link");
@@ -60,7 +55,7 @@ $(function () {
 
     });
 
-    // Initial Entries tests
+    // Initial entries suite
     describe('Initial Entries', function () {
 
         /* loadFeed() function is asynchronous so these tests require
@@ -71,7 +66,7 @@ $(function () {
         });
 
         // Test that loadFeed() loads at least a single .entry element within the .feed container
-        it('have at least 1 feed after loadFeed() is called', function (done) {
+        it('have at least 1 feed when loaded', function (done) {
             const entries = document.querySelector('.feed').getElementsByClassName('entry');
             expect(entries.length).toBeGreaterThan(0);
             done();
@@ -79,29 +74,29 @@ $(function () {
 
     });
 
-	// New feed selection tests
-	describe('New Feed Selection', function(){
+    // New feed selection suite
+    describe('New Feed Selection', function () {
 
-		let initialFeed;
+        let initialFeed;
 
-		// Load two different feeds to compare if content changes
-		beforeEach(function(done) {
-			loadFeed(0, function() {
-				// Store initial feed to compare it later
-				initialFeed = document.querySelector(".feed").innerHTML;
+        // Load two different feeds
+        beforeEach(function (done) {
+            loadFeed(0, function () {
+                // Store initial feed to compare it afterwards
+                initialFeed = document.querySelector(".feed").innerHTML;
 
-				// Load second feed content
-				loadFeed(1, done);
-			});
-		});
+                // Load second feed content
+                loadFeed(1, done);
+            });
+        });
 
-		// Make sure that the content has changed when loading a new feed
-		it("content changes according to feed", function(done) {
-			var currentFeed = document.querySelector(".feed").innerHTML;
-			expect(initialFeed).not.toBe(currentFeed);
-			done();
-		});
+        // Make sure that the content has changed when loading a new feed
+        it("content changes according to feed", function (done) {
+            var currentFeed = document.querySelector(".feed").innerHTML;
+            expect(initialFeed).not.toBe(currentFeed);
+            done();
+        });
 
-	});
-    
+    });
+
 }());
