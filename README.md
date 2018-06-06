@@ -20,4 +20,4 @@ Alternatively, it is also available online at [https://bycorsanchez.github.io/fe
 Jasmine tests are displayed at the bottom of the *feed reader* application, so you might need to scroll down to see them.
 
 * Tests running correctly are displayed in **green**.
-* Test with any error are displayed in **red** and display an error message.
+* Test with errors are displayed in **red** along with an error message.
