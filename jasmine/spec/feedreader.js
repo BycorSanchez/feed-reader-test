@@ -52,6 +52,7 @@ $(function () {
             // Since it's hidden by default, a click should make it visible (no 'menu-hidden' class is present)
             menu.click();
             expect(body.className).not.toContain('menu-hidden');
+
             // A second click should hide it ('menu-hidden' class is present)
             menu.click();
             expect(body.className).toContain('menu-hidden');
@@ -78,4 +79,29 @@ $(function () {
 
     });
 
+	// New feed selection tests
+	describe('New Feed Selection', function(){
+
+		let initialFeed;
+
+		// Load two different feeds to compare if content changes
+		beforeEach(function(done) {
+			loadFeed(0, function() {
+				// Store initial feed to compare it later
+				initialFeed = document.querySelector(".feed").innerHTML;
+
+				// Load second feed content
+				loadFeed(1, done);
+			});
+		});
+
+		// Make sure that the content has changed when loading a new feed
+		it("content changes according to feed", function(done) {
+			var currentFeed = document.querySelector(".feed").innerHTML;
+			expect(initialFeed).not.toBe(currentFeed);
+			done();
+		});
+
+	});
+    
 }());
