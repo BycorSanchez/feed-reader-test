@@ -18,7 +18,7 @@ $(function () {
         it('have URLs defined', function () {
             allFeeds.forEach(function (feed) {
                 expect(feed.url).toBeDefined();
-                expect(feed.url).not.toBe('');
+                expect(feed.url.length).toBeGreaterThan(0);
             });
         });
 
@@ -26,7 +26,7 @@ $(function () {
         it('have names defined', function () {
             allFeeds.forEach(function (feed) {
                 expect(feed.name).toBeDefined();
-                expect(feed.name).not.toBe('');
+                expect(feed.name.length).toBeGreaterThan(0);
             });
         });
     });
@@ -67,7 +67,7 @@ $(function () {
 
         // Test that loadFeed() loads at least a single .entry element within the .feed container
         it('have at least 1 feed when loaded', function (done) {
-            const entries = document.querySelector('.feed').getElementsByClassName('entry');
+            const entries = document.querySelectorAll('.feed .entry');
             expect(entries.length).toBeGreaterThan(0);
             done();
         });
